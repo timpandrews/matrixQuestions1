@@ -60,13 +60,14 @@ def verify_amount(externalLineItem):
         #If ext lineItem does not have the attr lineItems then it is a standalone lineitem and the amount is verfified
         return True
 
-def print_lineItem(lineItems):
-    print lineItems
-    for lineNumber, lineItem in enumerate(lineItems):
+def print_lineItem(ExternalLineItems):
+    print ExternalLineItems
+    print "\n\nInvoice Tree (including both external & internal line items)"
+    for lineNumber, lineItem in enumerate(ExternalLineItems):
         if hasattr(lineItem, 'lineItems'):
             print "XX", lineNumber + 1, lineItem.description, lineItem.amount
         else:
-            print lineNumber + 1, lineItem.description, lineItem.amount
+            print "  ", lineNumber + 1, lineItem.description, lineItem.amount
 
 
 

@@ -36,7 +36,6 @@ class Meeting(object):
          if person.name not in attendee_names:
             self.attendees.append(person)
 
-
      def calculate_fees(self):
          return sum(a.fee for a in self.attendees)
      def how_many_lunches_needed(self):
@@ -61,8 +60,11 @@ def main():
      our_meeting.add_attendee(Attendee("John Sample", 30))
      our_meeting.add_attendee(Attendee("Pat Smith", 50))
 
-     print "Total fees are: ", our_meeting.calculate_fees()
+     print "Total fees for the", our_meeting.name, "Event are: $", our_meeting.calculate_fees()
 
+     print "\nAttendees for ", our_meeting.name
+     for attendee in our_meeting.attendees:
+         print "  ", attendee.name, ", $", attendee.fee
 
 if __name__=="__main__":
      main()

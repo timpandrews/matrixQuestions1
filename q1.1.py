@@ -1,9 +1,13 @@
-#--- beginning of code ---
+'''
+Q1-1.
+Change the Meeting class so that the same person will not
+appear twice as an attendee, even if accidentally entered twice.
+'''
+
 class Attendee(object):
      def __init__(self, name, fee):
          self.name = name
          self.fee = fee
-         print "a:", self.name, self.fee
 
 class Meeting(object):
      def __init__(self, name, attendees):
@@ -17,12 +21,10 @@ class Meeting(object):
             if obj.name not in attendee_names:
                 noDuplicateAttendeeList.append(obj)
                 attendee_names.add(obj.name)
-            else:
-                print "dupe"
+
          self.attendees = noDuplicateAttendeeList
 
      def add_attendee(self, person):
-         print person.name
          attendee_names = set()
 
          #Check to make sure new attendee is not a duplicate before appending to obj
@@ -33,8 +35,7 @@ class Meeting(object):
          #Add new name if not duplicate
          if person.name not in attendee_names:
             self.attendees.append(person)
-         else:
-            print "dupe"
+
 
      def calculate_fees(self):
          return sum(a.fee for a in self.attendees)
@@ -43,7 +44,7 @@ class Meeting(object):
 
 
 def main():
-     #Original attendee list contains one duplicate
+     #---Altered original attendee list to contain one duplicate---
      attendees = [
                    Attendee("John Allston", 50),
                    Attendee("Margaret Bristol", 50),
@@ -56,12 +57,11 @@ def main():
 
      our_meeting = Meeting("Major Conference", attendees)
 
-     #Add two additional attendees one of which is a duplicate
+     #---Add two additional attendees one of which is a duplicate---
      our_meeting.add_attendee(Attendee("John Sample", 30))
      our_meeting.add_attendee(Attendee("Pat Smith", 50))
 
      print "Total fees are: ", our_meeting.calculate_fees()
-     print "lunches needed: ", our_meeting.how_many_lunches_needed()
 
 
 if __name__=="__main__":

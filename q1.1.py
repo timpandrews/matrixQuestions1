@@ -8,36 +8,38 @@ class Attendee(object):
 class Meeting(object):
      def __init__(self, name, attendees):
          self.name = name
-         #self.attendees = list(attendees)
-         input = list(attendees)
-         print type(input)
-
-         noDupesOutput = []
-         print type(noDupesOutput)
-         for attendee in input:
-            print "b:  ", attendee.name, attendee.fee
-            if attendee.name not in noDupesOutput:
-                print "add"
-                noDupesOutput.append(attendee)
-            else:
-                print "dupe"
-
-         self.attendees = noDupesOutput
-
-
-
+         inputList = list(attendees)
+         attendee_names = set()
+         noDuplicateAttendeeList = []
+         for obj in inputList:
+            if obj.name not in attendee_names:
+                noDuplicateAttendeeList.append(obj)
+                attendee_names.add(obj.name)
+         self.attendees = noDuplicateAttendeeList
 
      def add_attendee(self, person):
-         if person in self.attendees:
-             print "Duplicate"
-         else:
-             print "Add"
-             self.attendees.append(person)
+         
+         self.attendees.append(person)
+
      def calculate_fees(self):
          return sum(a.fee for a in self.attendees)
      def how_many_lunches_needed(self):
          return len(self.attendees)
 
+class DeDupe(object):
+    def __init__(self, attendees):
+        self.attendees = attendees
+        attendee_names = set()
+        noDuplicateAttendeeList = []
+        for obj in self.attendees:
+            if obj.name not in attendee_names:
+                noDuplicateAttendeeList.append(obj)
+                attendee_names.add(obj.name)
+
+        for x in noDuplicateAttendeeList:
+            print "x   ", x.name
+
+        return noDuplicateAttendeeList
 
 def main():
      attendees = [

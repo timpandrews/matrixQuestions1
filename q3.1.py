@@ -61,11 +61,15 @@ def verify_amount(externalLineItem):
         return True
 
 def print_lineItem(ExternalLineItems):
-    print ExternalLineItems
     print "\n\nInvoice Tree (including both external & internal line items)"
     for lineNumber, lineItem in enumerate(ExternalLineItems):
         if hasattr(lineItem, 'lineItems'):
-            print "XX", lineNumber + 1, lineItem.description, lineItem.amount
+            for lineNumber_2ndLevel, internalLineItem in enumerate(lineItem.lineItems):
+                if hasattr(internalLineItem, 'lineItems'):
+                    for lineNumber_3rdLevel, ThirdLevelLineItem in enumerate(internalLineItem.lineItems):
+                        print "  ", lineNumber + 1, ".", lineNumber_2ndLevel + 1, ".", lineNumber_3rdLevel + 1, ThirdLevelLineItem.description, ThirdLevelLineItem.amount
+                else:
+                    print "  ", lineNumber + 1, ".", lineNumber_2ndLevel + 1, internalLineItem.description, internalLineItem.amount
         else:
             print "  ", lineNumber + 1, lineItem.description, lineItem.amount
 
@@ -90,10 +94,12 @@ def main():
     # Line item where the amounts don't sum up properly.
     bad_ext = LineItem(amount=Decimal('2169.00'), description='Dues', lineItems=[int4, int3])
 
+
     print "External Line Item 1 Amount Verified = ", verify_amount(ext1)
     print "External Line Item 2 Amount Verified = ", verify_amount(ext2)
     print "External Line Item 3 Amount Verified = ", verify_amount(ext3)
     print "External Line Item 'bad_ext' Amount Verified = ", verify_amount(bad_ext)
+
 
     print_lineItem([ext1, ext2, ext3])
 

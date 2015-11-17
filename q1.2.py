@@ -11,7 +11,6 @@ class Meeting(object):
          self.attendees = list(attendees)
      def add_attendee(self, person):
          self.attendees.append(person)
-         print self.name
      def calculate_fees(self):
          return sum(a.fee for a in self.attendees)
      def how_many_lunches_needed(self):

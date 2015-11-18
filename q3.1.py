@@ -95,12 +95,13 @@ def main():
     bad_ext = LineItem(amount=Decimal('2169.00'), description='Dues', lineItems=[int4, int3])
 
 
+    # Q3.1 Verifies that the internal line items all sum up correctly to the amount of their parent
     print "External Line Item 1 Amount Verified = ", verify_amount(ext1)
     print "External Line Item 2 Amount Verified = ", verify_amount(ext2)
     print "External Line Item 3 Amount Verified = ", verify_amount(ext3)
     print "External Line Item 'bad_ext' Amount Verified = ", verify_amount(bad_ext)
 
-
+    # Q3.2 Print Out of complete Invoice Tree (including both external and internal line items)
     print_lineItem([ext1, ext2, ext3])
 
 if __name__=="__main__":

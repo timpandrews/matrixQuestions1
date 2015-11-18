@@ -1,0 +1,32 @@
+
+table {
+    border: 2px solid black;
+}
+
+th {
+    font-weight: bold;
+    font-size: 14pt;
+    padding-left: 15px;
+    padding-right: 15px;
+    text-align: center;
+}
+
+td {
+    text-align: center;
+    border: 1px solid grey
+}
+
+.aboveEMA {
+    color: #006600;
+    background-color: #ccffcc;
+}
+
+.belowEMA {
+    color: #661400;
+    background-color: #ffd6cc;
+}
+
+.equalToEMA {
+    color: #333333;
+    background-color: #e6e6e6;
+}

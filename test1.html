@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Test1</title>
+    <link rel="stylesheet" type="text/css" href="test1.css" />
+    <script type="text/javascript" src="test1.js"></script>
+</head>
+
+<!--
+Demonstrate the ability to use timers and to manipulate
+the DOM using JavaScript and CSS.
+Provide test1.css and test1.js files that implement the following behavior:
+Every second:
+1. generate a random number (integer between 1 and 10 inclusive)
+2. update a 20 sample exponential moving average of the generated numbers
+3. add the number along with the average to a table
+4. if the number is greater than the average, display the number in green
+5. if the number is less than the average, display the number in red
+6. if the table contains more than 10 entries, remove the oldest entry
+7. stop after 100 iterations
+Notes:
+This page may not be modified:  any additional page content must
+be generated dynamically using JavaScript.
+This page's onload handler will call a function named init.
+Your test1.js should define this function.
+Your test1.css should define what "display the number in red/green" means.
+No third party JavaScript libraries (ie, jquery) may be used.
+-->
+
+<body onload="init();">
+
+
+    <h1>Test</h1>
+
+    <table id="resultsTable">
+        <thead>
+            <tr>
+                <th>Random Number</th>
+                <th>EMA</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>5</td>
+                <td>5</td>
+            </tr>
+        </tbody>
+    </table>
+    <br />
+
+
+</body>
+
+</html>
